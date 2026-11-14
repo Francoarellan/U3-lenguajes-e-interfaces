@@ -1,8 +1,6 @@
 # U3 - Lenguajes e Interfaces
+Franco Antonio Arellano Moreno
 
-Repositorio de prácticas correspondientes a la **Unidad 3** de la materia **Lenguajes e Interfaces** (Instituto Tecnológico de Culiacán), impartida por el profesor José Luis Medina Jiménez. 
-
-Los programas están desarrollados en **Lenguaje Ensamblador x86 (32 bits)** utilizando **MASM** y la librería **Irvine32**, enfocándose en el manejo de subrutinas, la pila de ejecución, macros y manipulación de cadenas.
 
 ---
 
@@ -23,12 +21,4 @@ Los programas están desarrollados en **Lenguaje Ensamblador x86 (32 bits)** uti
 - **[Práctica 5: Lectura de Cadenas y Validación en Memoria](u3-practicas/practica5/main.asm)**  
   Gestiona la entrada de texto por teclado almacenándola en un búfer (`DUP` y `ReadString`). Evalúa si la cadena ingresada está vacía inspeccionando directamente su primer byte en memoria (`BYTE PTR [cadena]`) para verificar la presencia del carácter terminador nulo (`0`) mediante saltos condicionales (`CMP` y `JE`).
 
----
-
-## 🛠️ Requisitos y Ejecución
-* **Ensamblador:** Microsoft Macro Assembler (MASM)
-* **IDE:** Visual Studio 2022 (configurado para proyectos x86)
-* **Dependencias:** Librería `Irvine32.inc`
-
----
-**Autor:** Franco Antonio Arellano Moreno
+Franco Antonio Arellano Moreno
