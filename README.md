@@ -21,4 +21,4 @@ Franco Antonio Arellano Moreno
 - **[Práctica 5: Lectura de Cadenas y Validación en Memoria](u3-practicas/practica5/main.asm)**  
   Gestiona la entrada de texto por teclado almacenándola en un búfer (`DUP` y `ReadString`). Evalúa si la cadena ingresada está vacía inspeccionando directamente su primer byte en memoria (`BYTE PTR [cadena]`) para verificar la presencia del carácter terminador nulo (`0`) mediante saltos condicionales (`CMP` y `JE`).
 
-Franco Antonio Arellano Moreno
+
