@@ -4,32 +4,30 @@ INCLUDE Irvine32.inc
 .data
 	
 .code
-main PROC 
-	 mov ebx, 10
-	 push 1
-	 push 2
+main PROC                       ; Inicio del procedimiento principal
+	mov ebx, 10                 ; Carga 10 en EBX para comprobar después que su valor se preserva
+	push 1                      ; Empuja el primer parámetro (1) a la pila (ocupará [ebp+12])
+	push 2                      ; Empuja el segundo parámetro (2) a la pila (ocupará [ebp+8])
 
-	 call sumarPila
+	call sumarPila              ; Guarda la dirección de retorno en la pila y salta a sumarPila
 
-	 nop
-	 exit
+	nop                         ; Instrucción vacía útil para puntos de interrupción
+	exit                        ; Finaliza el programa
+main ENDP                       ; Fin del procedimiento principal
 
-main ENDP
+sumarPila PROC                  ; Inicio del procedimiento sumarPila
+	push ebp                    ; Guarda el valor anterior de EBP en la pila para preservarlo
+	mov ebp, esp                ; Establece el marco de pila actual apuntando a la cima de ESP
 
-sumarPila PROC 
-	push ebp ; para guardarlo en la pila, para marcar la sima de la pila a mi punto de referencia
-	mov ebp, esp ; se vuelve la referancia para movernos en la pila
+	push ebx                    ; Guarda EBX en la pila porque el procedimiento lo va a modificar
+	mov eax, [ebp+8]            ; Accede al segundo parámetro apilado (valor 2)
+	mov ebx, [ebp+12]           ; Accede al primer parámetro apilado (valor 1)
 
-	push ebx
-	mov eax, [ebp+8] ; accede al valor 2
-	mov ebx, [ebp+12]; accede al valor 1
-
-	imul eax, ebx ; imul permite especificar 2 registros, mul siempre multiplica eax
+	imul eax, ebx               ; Multiplica EAX * EBX (2 * 1) y guarda el resultado en EAX
 	
-	pop ebx
-	pop ebp
-	ret 8 ; limpia los 2 registros realizados antes del call, de la pila
-
-sumarPila ENDP
+	pop ebx                     ; Restaura el valor original de EBX (10) desde la pila
+	pop ebp                     ; Restaura el puntero base EBP del llamador
+	ret 8                       ; Retorna a 'main' y suma 8 a ESP para limpiar los 2 parámetros de la pila
+sumarPila ENDP                  ; Fin del procedimiento sumarPila
 
 END main
